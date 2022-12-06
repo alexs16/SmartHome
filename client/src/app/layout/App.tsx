@@ -1,9 +1,13 @@
-import { createTheme, CssBaseline, ThemeProvider, Typography } from "@mui/material";
-import { light } from "@mui/material/styles/createPalette";
-import { Container } from "@mui/system";
+import { Container, createTheme, CssBaseline, ThemeProvider, Typography } from "@mui/material";
 import { useState } from "react";
+import { Link, Route, Switch, withRouter } from "react-router-dom";
+import AboutPage from "../../features/about/AboutPage";
 import Catalog from "../../features/catalog/Catalog";
+import ProductDetails from "../../features/catalog/ProductDetails";
+import ContactPage from "../../features/contact/ContactPage";
+import HomePage from "../../features/home/HomePage";
 import Header from "./Header";
+
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -17,7 +21,7 @@ function App() {
     }
   })
 
-  function handleThemeChange(){
+  function handleThemeChange() {
     setDarkMode(!darkMode);
   }
 
@@ -26,10 +30,15 @@ function App() {
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
       <Container>
-        <Catalog />
+        <Route exact path='/' component={HomePage} />
+        <Route exact path='/catalog' component={Catalog} />
+        <Route path='/catalog/:id' component={ProductDetails} />
+        <Route path='/about' component={AboutPage} />
+        <Route path='/contact' component={ContactPage} />
       </Container>
     </ThemeProvider>
   );
 }
 
 export default App;
+
