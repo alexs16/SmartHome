@@ -4,7 +4,11 @@ import ReactDOM from 'react-dom'; //react17
 import './app/layout/styles.css';
 import App from './app/layout/App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history'
+
+export const history = createBrowserHistory();
+
 //React 17
 ReactDOM.render(
   <React.StrictMode>
